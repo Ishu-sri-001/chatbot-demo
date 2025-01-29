@@ -24,10 +24,17 @@ export default function Home() {
     }
   }
 
+  const totalSteps = 3
+
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 pt-2">
-      <div className="w-full max-w-4xl rounded-lg shadow-xl p-8">
+      <div className="w-full max-w-4xl rounded-lg shadow-xl px-8 py-2">
         {/* <Progress value={(step / 4) * 100} className="mb-8 bg-white" /> */}
+        {step < 4 && (
+          <div className="text-center mb-2 text-lg font-semibold">
+            Step {step} of {totalSteps}
+          </div>
+        )}
         {step === 1 && <UserRegistration nextStep={nextStep} updateUserData={updateUserData} />}
         {step === 2 && <OrganizationSetup nextStep={nextStep} prevStep={prevStep} updateOrgData={updateOrgData} />}
         {step === 3 && <ChatbotIntegration nextStep={nextStep} prevStep={prevStep} />}
