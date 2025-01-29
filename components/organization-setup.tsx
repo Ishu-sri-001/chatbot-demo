@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Loader2 } from "lucide-react"
-import { db } from "../firebase/config"
+import { db } from "../app/firebase/config"
 import { collection, addDoc, getDocs } from "firebase/firestore"
 import { ScrapedPage } from "@/types/dummy-pages"
 import {
@@ -57,16 +57,17 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
   setScrapedPages(pagesData)
 }
 
+
   const fetchMetaDescription = async () => {
     if (!websiteUrl) return
-  
+
     setIsFetchingMeta(true)
     try {
       let url = websiteUrl
-      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
         url = `https://${url}`
       }
-  
+
       const response = await fetch(`/api/fetch-meta?url=${encodeURIComponent(url)}`)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
@@ -74,9 +75,12 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
       const data = await response.json()
       if (data.metaDescription) {
         setDescription(data.metaDescription)
+      } else {
+        throw new Error("No meta description found")
       }
     } catch (error) {
       console.error("Error fetching meta description:", error)
+      alert("Cannot fetch meta details right now. Please try again later!")
     } finally {
       setIsFetchingMeta(false)
     }

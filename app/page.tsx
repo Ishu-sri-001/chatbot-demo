@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import UserRegistration from "./components/user-registration"
-import OrganizationSetup from "./components/organization-setup"
-import ChatbotIntegration from "./components/chatbot-integration"
-import Success from "./components/success"
+import UserRegistration from "../components/user-registration"
+import OrganizationSetup from "../components/organization-setup"
+import ChatbotIntegration from "../components/chatbot-integration"
+import Success from "../components/success"
 import { Progress } from "@/components/ui/progress"
 
 export default function Home() {
@@ -16,7 +16,13 @@ export default function Home() {
   const prevStep = () => setStep(step - 1)
 
   const updateUserData = (data: any) => setUserData({ ...userData, ...data })
-  const updateOrgData = (data: any) => setOrgData({ ...orgData, ...data })
+  // const updateOrgData = (data: any) => setOrgData({ ...orgData, ...data })
+  const updateOrgData = (data: any) => {
+    setOrgData({ ...orgData, ...data })
+    if (data.websiteUrl) {
+      localStorage.setItem("websiteUrl", data.websiteUrl)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">

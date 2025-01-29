@@ -14,9 +14,16 @@ interface ChatbotIntegrationProps {
 export default function ChatbotIntegration({ nextStep, prevStep }: ChatbotIntegrationProps) {
   const [integrationSuccess, setIntegrationSuccess] = useState(false)
 
+  // const handleTestChatbot = () => {
+  //   window.open("https://example.com", "_blank")
+  // }
+
   const handleTestChatbot = () => {
-    window.open("https://example.com", "_blank")
+    const websiteUrl = localStorage.getItem("websiteUrl") || "https://example.com"
+    window.open(`/dummy-page?url=${encodeURIComponent(websiteUrl)}`, "_blank")
   }
+  
+  
 
   const handleIntegrate = () => {
     // Simulate integration process
@@ -58,7 +65,7 @@ export default function ChatbotIntegration({ nextStep, prevStep }: ChatbotIntegr
               </Tabs>
             </DialogContent>
           </Dialog>
-          <Button onClick={handleIntegrate} className="w-full">
+          <Button onClick={nextStep} className="w-full">
             Test Integration
           </Button>
         </div>
