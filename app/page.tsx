@@ -25,9 +25,9 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl p-8">
-        <Progress value={(step / 4) * 100} className="mb-8" />
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 pt-2">
+      <div className="w-full max-w-4xl rounded-lg shadow-xl p-8">
+        {/* <Progress value={(step / 4) * 100} className="mb-8 bg-white" /> */}
         {step === 1 && <UserRegistration nextStep={nextStep} updateUserData={updateUserData} />}
         {step === 2 && <OrganizationSetup nextStep={nextStep} prevStep={prevStep} updateOrgData={updateOrgData} />}
         {step === 3 && <ChatbotIntegration nextStep={nextStep} prevStep={prevStep} />}

@@ -17,6 +17,7 @@ import {
   type User,
 } from "firebase/auth"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { FcGoogle } from "react-icons/fc";
 
 interface UserRegistrationProps {
   nextStep: () => void
@@ -137,15 +138,15 @@ export default function UserRegistration({ nextStep, updateUserData }: UserRegis
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Verify Your Email</CardTitle>
+          <CardTitle className="mx-auto mb-5 text-xl">Verify Your Email</CardTitle>
         </CardHeader>
         <CardContent>
           <p>We&apos;ve sent a verification email to {email}. Please check your inbox and click the verification link.</p>
           <p>Once verified, please log in to continue.</p>
-          <Button onClick={() => setVerificationSent(false)} className="mt-4">
+          <Button onClick={() => setVerificationSent(false)} className="mt-4 mx-auto hover:bg-black hover:border hover:border-black ">
             Return to Login
           </Button>
-          <Button onClick={resendVerificationEmail} variant="outline" className="mt-2 w-full">
+          <Button onClick={resendVerificationEmail} variant="outline" className=" border border-primary mt-2 w-full hover:bg-primary hover:text-white">
             Resend Verification Email
           </Button>
         </CardContent>
@@ -154,11 +155,16 @@ export default function UserRegistration({ nextStep, updateUserData }: UserRegis
   }
 
   return (
-    <Card>
+    <Card className="border border-primary font-inter">
       <CardHeader>
-        <CardTitle>{isLogin ? "Login" : "User Registration"}</CardTitle>
+        <CardTitle className="text-xl lg:text-2xl font-bold text-center"><p className="mb-1">{isLogin ? "Login" : "Sign In"}</p>
+        
+        <p className="text-center text-base font-light font-inter">Welcome to chatbot integration !</p>
+        
+        </CardTitle>
       </CardHeader>
       <CardContent>
+        
         {error && (
           <Alert variant="destructive" className="mb-4">
             <AlertDescription>{error}</AlertDescription>
@@ -190,8 +196,8 @@ export default function UserRegistration({ nextStep, updateUserData }: UserRegis
               Forgot password?
             </Button>
           )}
-          <Button type="submit" className="w-full">
-            {isLogin ? "Login" : "Register"}
+          <Button type="submit" className="w-full ">
+             {isLogin ? "Login" : "Register"} 
           </Button>
           <Button type="button" variant="link" onClick={() => setIsLogin(!isLogin)} className="w-full">
             {isLogin ? "Need an account? Sign up" : "Already have an account? Log in"}
@@ -199,8 +205,9 @@ export default function UserRegistration({ nextStep, updateUserData }: UserRegis
         </form>
       </CardContent>
       <CardFooter>
-        <Button onClick={handleGoogleSignIn} variant="outline" className="w-full">
+        <Button onClick={handleGoogleSignIn} variant="outline" className="w-full border border-zinc-600 hover:bg-primary hover:text-white hover:font-semibold">
           Continue with Google
+          <span> <FcGoogle color=""/> </span>
         </Button>
       </CardFooter>
     </Card>
