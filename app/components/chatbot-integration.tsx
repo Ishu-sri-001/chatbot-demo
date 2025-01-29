@@ -47,13 +47,13 @@ export default function ChatbotIntegration({ nextStep, prevStep }: ChatbotIntegr
                   <TabsTrigger value="email">Email Instructions</TabsTrigger>
                 </TabsList>
                 <TabsContent value="manual">
-                  <p className="mt-2">Add the following code to your website's &lt;head&gt; tag:</p>
+                  <p className="mt-2">Add the following code to your website&apos;s &lt;head&gt; tag:</p>
                   <pre className="bg-gray-100 p-2 mt-2 rounded">
                     {`<script src="https://chatbot-integration.js"></script>`}
                   </pre>
                 </TabsContent>
                 <TabsContent value="email">
-                  <p className="mt-2">We've sent integration instructions to your developer's email.</p>
+                  <p className="mt-2">We&apos;ve sent integration instructions to your developer&apos;s email.</p>
                 </TabsContent>
               </Tabs>
             </DialogContent>

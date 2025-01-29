@@ -1,31 +1,24 @@
+import { type NextRequest, NextResponse } from "next/server"
 
-import { NextApiRequest, NextApiResponse } from 'next'
+export async function GET(request: NextRequest) {
+  const url = request.nextUrl.searchParams.get("url")
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-
-  const url = req.query.url as string
-  
   if (!url) {
-    return res.status(400).json({ error: 'URL parameter is required' })
+    return NextResponse.json({ error: "URL parameter is required" }, { status: 400 })
   }
 
   try {
     const response = await fetch(url)
     const html = await response.text()
-    
+
     // Simple regex to extract meta description
     const metaMatch = html.match(/<meta[^>]*name="description"[^>]*content="([^"]*)"[^>]*>/i)
-    const metaDescription = metaMatch ? metaMatch[1] : ''
+    const metaDescription = metaMatch ? metaMatch[1] : ""
 
-    return res.status(200).json({ metaDescription })
+    return NextResponse.json({ metaDescription })
   } catch (error) {
-    console.error('Error fetching meta description:', error)
-    return res.status(500).json({ error: 'Failed to fetch meta description' })
+    console.error("Error fetching meta description:", error)
+    return NextResponse.json({ error: "Failed to fetch meta description" }, { status: 500 })
   }
 }
+
