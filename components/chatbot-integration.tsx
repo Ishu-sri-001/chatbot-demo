@@ -34,35 +34,35 @@ export default function ChatbotIntegration({ nextStep, prevStep }: ChatbotIntegr
       </CardHeader>
       <CardContent>
         <div className="space-y-7 mb-5">
-          <Button onClick={handleTestChatbot} className="w-full text-lg font-inter border py-5 hover:bg-white hover:text-black hover:font-bold hover:border-primary">
+          <Button onClick={handleTestChatbot} className="w-full text-base lg:text-lg font-inter border py-5 hover:bg-white hover:text-black hover:font-bold hover:border-primary">
             Test Chatbot
           </Button>
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="w-full text-lg font-inter border py-5 hover:bg-white hover:text-black hover:font-bold hover:border-primary">Integrate on your website</Button>
+              <Button className="w-full text-base lg:text-lg font-inter border py-5 hover:bg-white hover:text-black hover:font-bold hover:border-primary">Integrate on your website</Button>
             </DialogTrigger>
-            <DialogContent className="px-2 mx-1 lg:mx-0">
-              <DialogHeader>
+            <DialogContent className="px-2 mx-1 lg:mx-0 w-[320px] lg:w-full">
+              <DialogHeader className="w-[320px] lg:w-full">
                 <DialogTitle className="text-center mb-8 lg:text-2xl">Integration Options</DialogTitle>
               </DialogHeader>
-              <Tabs defaultValue="manual">
-                <TabsList className="grid w-full grid-cols-2 space-x-2 mb-5">
+              <Tabs defaultValue="manual ">
+                <TabsList className="grid grid-cols-2 space-x-2 mb-5 w-[300px] lg:w-full">
                   <TabsTrigger value="manual" className="border border-primary  data-[state=active]:bg-black data-[state=active]:text-white">Manual Integration</TabsTrigger>
                   <TabsTrigger value="email" className="border border-primary  data-[state=active]:bg-black data-[state=active]:text-white">Email Instructions</TabsTrigger>
                 </TabsList>
-                <TabsContent value="manual">
+                <TabsContent value="manual" className="w-[320px] lg:w-full">
                   <p className="mt-5 pl-4">Add the following code to your website&apos;s &lt;head&gt; tag:</p>
-                  <pre className="bg-gray-100 font-semibold p-2 mt-2 rounded">
-                    {`<script src="https://chatbot-integration.js"></script>`}
+                  <pre className="lg:bg-zinc-300 font-semibold p-2 mt-2 rounded whitespace-pre-wrap break-words">
+                          &lt;script src=&quot;https://chatbot-integration.js&quot;&gt;&lt;/script&gt;
                   </pre>
                 </TabsContent>
-                <TabsContent value="email">
+                <TabsContent value="email" className="w-[300px] lg:w-full">
                   <p className="mt-5 pt-7 pb-5 pl-4">We&apos;ve sent integration instructions to your developer&apos;s email.</p>
                 </TabsContent>
               </Tabs>
             </DialogContent>
           </Dialog>
-          <Button onClick={nextStep} className="w-full text-lg font-inter border py-5 hover:bg-white hover:text-black hover:font-bold hover:border-primary">
+          <Button onClick={nextStep} className="w-full text-base lg:text-lg font-inter border py-5 hover:bg-white hover:text-black hover:font-bold hover:border-primary">
             Test Integration
           </Button>
         </div>

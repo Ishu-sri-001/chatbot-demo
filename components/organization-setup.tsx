@@ -122,7 +122,7 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
   }
 
   return (
-    <Card className="max-w-4xl mx-auto border border-primary">
+    <Card className="max-w-[350px] lg:max-w-4xl mx-auto border border-primary">
       <CardHeader>
         <CardTitle className="mx-auto font-inter text-xl lg:text-2xl font-bold">Organization Setup</CardTitle>
       </CardHeader>
@@ -173,8 +173,8 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
 
         {showWebsitePages && (
           <div className="mt-8 space-y-4">
-            <div className="flex items-center justify-between mb-10 mt-10">
-              <h3 className="lg:text-xl font-semibold">Website Pages</h3>
+            <div className="flex flex-col lg:flex-row items-center justify-between mb-10 mt-10">
+              <h3 className="text-xl font-semibold mb-6 lg:mb-0 mt-2">Website Pages</h3>
               <div className="flex space-x-2 text-sm font-inter">
                 <Badge variant="outline" className="border border-primary lg:text-sm ">
                   Detected: {scrapedPages.filter((p) => p.status === "detected").length}
@@ -188,11 +188,11 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
               </div>
             </div>
 
-            <Table className="border border-primary rounded-lg">
+            <Table className="border border-primary ">
               <TableHeader>
-                <TableRow className="border border-primary font-inter ">
+                <TableRow className="border border-primary font-inter">
                   <TableHead className="text-black font-semibold pl-5">URL</TableHead>
-                  <TableHead className="text-black font-semibold pl-10 lg:pl-20">Title</TableHead>
+                  <TableHead className="text-black font-semibold pl-5 lg:pl-20">Title</TableHead>
                   <TableHead className="text-black font-semibold">Last Updated</TableHead>
                   <TableHead className="text-black font-semibold">Status</TableHead>
                 </TableRow>
@@ -200,15 +200,15 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
               <TableBody className="space-y-2 ">
                 {scrapedPages.map((page) => (
                   <TableRow key={page.id} className="border border-primary rounded-lg ">
-                    <TableCell className="py-2 " colSpan={4}>
+                    <TableCell className="py-2 px-2" colSpan={4}>
                       <Accordion type="single" collapsible className="w-full">
                         <AccordionItem value={page.id}>
-                          <AccordionTrigger className="hover:no-underline px-4 py-2">
+                          <AccordionTrigger className="hover:no-underline lg:px-4 py-2">
                             <div className="grid grid-cols-4 w-full ">
-                              <span className="truncate lg:mr-7 lg:pr-5">{page.url}</span>
-                              <span className="">{page.title}</span>
-                              <span className="mx-auto lg:pr-5">{page.lastUpdated.toLocaleDateString()}</span>
-                              <span className="text-right lg:pr-10">{getStatusBadge(page.status)}</span>
+                              <span className="truncate lg:mr-7 lg:pr-5 text-xs lg:text-sm">{page.url}</span>
+                              <span className="text-xs lg:text-sm">{page.title}</span>
+                              <span className="mx-auto lg:pr-5 text-xs lg:text-sm">{page.lastUpdated.toLocaleDateString()}</span>
+                              <span className="text-right lg:pr-10 ">{getStatusBadge(page.status)}</span>
                             </div>
                           </AccordionTrigger>
                           <AccordionContent>
@@ -216,7 +216,7 @@ export default function OrganizationSetup({ nextStep, prevStep, updateOrgData }:
                               <div className="grid grid-cols-3 gap-4">
                                 <div>
                                   <Label>Page Views</Label>
-                                  <p className="text-lg font-semibold">{page.pageViews}</p>
+                                  <p className="text-xs lg:text-lg font-semibold">{page.pageViews}</p>
                                 </div>
                                 <div>
                                   <Label>Avg. Time on Page</Label>

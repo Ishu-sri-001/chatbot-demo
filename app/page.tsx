@@ -5,7 +5,6 @@ import UserRegistration from "../components/user-registration"
 import OrganizationSetup from "../components/organization-setup"
 import ChatbotIntegration from "../components/chatbot-integration"
 import Success from "../components/success"
-import { Progress } from "@/components/ui/progress"
 
 export default function Home() {
   const [step, setStep] = useState(1)
@@ -16,7 +15,6 @@ export default function Home() {
   const prevStep = () => setStep(step - 1)
 
   const updateUserData = (data: any) => setUserData({ ...userData, ...data })
-  // const updateOrgData = (data: any) => setOrgData({ ...orgData, ...data })
   const updateOrgData = (data: any) => {
     setOrgData({ ...orgData, ...data })
     if (data.websiteUrl) {
@@ -27,9 +25,8 @@ export default function Home() {
   const totalSteps = 3
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 pt-2">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-0 lg:p-4 pt-2">
       <div className="w-full max-w-4xl rounded-lg shadow-xl px-8 py-2">
-        {/* <Progress value={(step / 4) * 100} className="mb-8 bg-white" /> */}
         {step < 4 && (
           <div className="text-center mb-2 text-lg font-semibold">
             Step {step} of {totalSteps}

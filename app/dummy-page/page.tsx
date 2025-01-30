@@ -124,13 +124,13 @@ function DummyPageContent() {
         <h1 className="text-2xl font-bold mb-4">{url}</h1>
         <p>This is a dummy page representing the client&apos;s website.</p>
       </div>
-      <div className="fixed bottom-4 right-4 w-64 h-96 bg-white border border-primary rounded-lg shadow-lg flex flex-col">
+      <div className="fixed bottom-4 right-4 w-48 h-80 lg:w-64 lg:h-96 bg-white border border-primary rounded-lg shadow-lg flex flex-col">
         <div className="bg-primary text-white p-2 rounded-t-lg">Chatbot</div>
         <div className="flex-grow p-2 overflow-y-auto">
           {messages.map((message, index) => (
             <div key={index} className={`mb-2 ${message.isUser ? "text-right" : ""}`}>
               <div
-                className={`p-2 rounded-lg inline-block ${
+                className={`p-2 rounded-lg inline-block text-sm lg:text-base ${
                   message.isUser ? "bg-gray-200 border border-primary text-gray-800" : "bg-zinc-700 text-white"
                 }`}
               >
